@@ -6,40 +6,63 @@ m = list(input())
 
 
 
-pad = [['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l'],['z','x','c','v','b','n','m']]
+padl = [['q','w','e','r','t'],['a','s','d','f','g'],['z','x','c','v']]
+padr = [['','y','u','i','o','p'],['','h','j','k','l'],['b','n','m']]
+
 
 #초기 위치
 for i in range(3):
-    for j in range(len(pad[i])):
-        if pad[i][j] == l:
+    for j in range(len(padl[i])):
+        if padl[i][j] == l:
             lx = i
             ly = j
-        if pad[i][j] == r:
+
+for i in range(3):
+    for j in range(len(padr[i])):
+        if padr[i][j] == r:
             rx = i
             ry = j
-            
+
+
 #주어진 값 위치
-m_loc=[]
+l_loc=[]
+r_loc=[]
+
+
 for k in range(len(m)):
-    for i in range(3):
-        for j in range(len(pad[i])):
-            if pad[i][j] == m[k]:
-                m_loc.append([i,j])
-        
+    for l in range(3):
+        if m[k] in padl[l]:
+            for i in range(3):
+                for j in range(len(padl[i])):
+                    if padl[i][j] == m[k]:
+                        l_loc.append([i,j])
+    for l in range(3):
+        if m[k] in padr[l]:
+            for i in range(3):
+                for j in range(len(padr[i])):
+                    if padr[i][j] == m[k]:
+                        r_loc.append([i,j])
+                        
+
+# print(l_loc, r_loc)
 
 #거리비교
-val=[1] * len(m)
-for i in range(len(m)):
-    val[i] += min(abs(m_loc[i][0]-lx)+abs(m_loc[i][1]-ly),abs(m_loc[i][0]-rx)+abs(m_loc[i][1]-ry))
-    # if val[i] == abs(m_loc[i][0]-lx)+abs(m_loc[i][1]-ly):
-    #     lx = m_loc[i][0]
-    #     ly = m_loc[i][1]
-    # elif val[i] == abs(m_loc[i][0]-rx)+abs(m_loc[i][1]-ry):
-    #     rx = m_loc[i][0]
-    #     ry = m_loc[i][1]
+val = []
+
+for i in range(len(l_loc)):
+    val.append(abs(l_loc[i][0]-lx)+abs(l_loc[i][1]-ly))
+    lx = l_loc[i][0]
+    ly = l_loc[i][1]
+
+
+for i in range(len(r_loc)):
+    val.append(abs(r_loc[i][0]-rx)+abs(r_loc[i][1]-ry))
+    rx = r_loc[i][0]
+    ry = r_loc[i][1]
         
 
-print(val)
+# print(val_l,val_r)
+print(len(val) + sum(val))
             
         
         
