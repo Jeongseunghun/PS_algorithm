@@ -1,19 +1,22 @@
+n = int(input())
 
-n=int(input())
 dic = {}
 
 for i in range(n):
-    a= input().split(".")[1]
-    if a not in dic:
-        dic[a] = 1
-    else:
+    a = list(input().split("."))[1]
+    if a in dic:
         dic[a] +=1
+    elif a not in dic:
+        dic[a] = 1
 
-item = list(dic.keys())
-item.sort()
+res = list(dic)
+res.sort()
 
-for i in item:
-    print(i,dic[i])
+for i in res:
+    print(i, dic[i])
+
+
+    
 
 
 
