@@ -1,38 +1,15 @@
-S = input()
-stack = ""
-res = ""
+s= input().split()
 
-for i in S:
-    if i == " ":
-        if "<" not in stack:
-            res += stack[::-1] + i
-        else:
-            stack += i
-    elif i == "<":
-        res += stack[::-1]
-        stack = ''
-        stack += i
-        
-    elif i == ">":
-        res += stack + i
-        stack = ''
-    
-    else:
-        stack += i
-
-
-res += stack[::-1]
-
-    
-
-    
-
-
-
-
+for i in range(len(s)):
+    if "<" not in s[i]:
+        s[i] = s[i][::-1]
+    elif "<" in s[i]:
+                
         
         
-
-
-print(res)
-    
+        
+        
+print(s)
+                
+            
+        
