@@ -1,15 +1,38 @@
-s= input().split()
+s= list(input())
+tag = False
+res = ""
+ans = ""
 
-for i in range(len(s)):
-    if "<" not in s[i]:
-        s[i] = s[i][::-1]
-    elif "<" in s[i]:
-                
+for i in s:
+    # 거꾸로
+    if tag == False:
+        if i == "<":
+            res+=i
+            tag = True
+        elif i == " ":
+            res+=i
+            ans+=res
+            res=""
+        else:
+            res = i + res
+     
+    # 제대로       
+    elif tag == True:
+        if i == ">":
+            res+=i
+            tag = False
+            ans+=res
+            res=""
+        else:
+            res+=i
         
         
         
-        
-print(s)
-                
+print(ans+res)
             
+     
+
+    
+        
+                        
         
