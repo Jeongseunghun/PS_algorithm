@@ -10,7 +10,7 @@ dx=[-1,1,0,0]
 dy=[0,0,-1,1]
 
 Q= collections.deque([(0,0)])
-result=0
+
 
 while Q:
     x,y = Q.popleft()
