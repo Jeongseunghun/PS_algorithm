@@ -19,7 +19,6 @@ for i in n:
             for k in range(5):
                 for l in range(k+1,5):
                     if cnt[k] < cnt[l]:
-                    
                         print(-1)
                         exit()
 
