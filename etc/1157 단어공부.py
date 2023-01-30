@@ -4,7 +4,7 @@ word_set = list(set(word))
 cnt = []
 
 for i in word_set:
-    cnt.append(word_set.count(i))
+    cnt.append(word.count(i))
 
 if cnt.count(max(cnt)) > 1:
     print('?')
