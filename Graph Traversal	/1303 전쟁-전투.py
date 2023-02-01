@@ -15,7 +15,7 @@ w,p = 0,0
 def bfs():
     t = 1
     q.append((i,j))
-    visited[i][j] = 1
+    
     while q:
         x,y = q.popleft()
         for k in range(4):
@@ -31,6 +31,7 @@ def bfs():
 for i in range(M):
     for j in range(N):
         if visited[i][j] == 0:
+            visited[i][j] = 1
             ans = bfs()
             if lst[i][j] == 'W':
                 w += ans*ans
