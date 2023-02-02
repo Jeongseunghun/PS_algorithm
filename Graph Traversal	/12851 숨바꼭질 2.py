@@ -1,6 +1,5 @@
 from collections import deque
 
-from torch import kl_div
 
 N,K = map(int,input().split())
 MAX_SIZE = 100001
