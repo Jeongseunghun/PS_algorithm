@@ -26,10 +26,9 @@ for _ in range(T):
             for i in range(8):
                 nx = x + dx[i]
                 ny = y + dy[i]
-                if 0 > nx or 0 > ny or nx >= l or ny >= l:
+                if 0 > nx or 0 > ny or nx >= l or ny >= l or visited[nx][ny] != 0:
                     continue
-                if visited[nx][ny] == 0:
+                else:
                     q.append((nx,ny))
                     visited[nx][ny] = visited[x][y] + 1
-        return False
     bfs(a,b,c,d)
