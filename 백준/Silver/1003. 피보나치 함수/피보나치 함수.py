@@ -1,12 +1,11 @@
 t = int(input())
- 
 for _ in range(t):
-    cnt_0 = [1,0]
-    cnt_1 = [0,1]
-    n = int(input())
-    if n>1:
-        for i in range(n-1):
-            cnt_0.append(cnt_1[-1])
-            cnt_1.append(cnt_0[-2]+cnt_1[-1]) 
- 
-    print(cnt_0[n], cnt_1[n])
+    N = int(input())
+    zero = [1,0]
+    one = [0,1]
+    if N>1:
+        for i in range(N-1):
+            zero.append(one[-1])
+            one.append(zero[-2]+one[-1])
+            
+    print(zero[N],one[N])
