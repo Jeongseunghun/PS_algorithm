@@ -1,42 +1,51 @@
 from collections import deque
 
-n = int(input())
-graph = [list(map(int, input().split())) for _ in range(n)]
-maxCnt = 0
+N = int(input())
+loc = [list(map(int,input().split())) for _ in range(N)]
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+#상하좌우
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+max_h = 0
+for i in range(N):
+    for j in range(N):
+        max_h = max(max_h,loc[i][j])
 
 
-def bfs(x, y):
-    queue = deque()
-    queue.append([x, y])
-    while queue:
-        x, y = queue.popleft()
+def bfs(i,j):
+    q = deque()
+    q.append((i,j))
+    visited[i][j] = -1
+    while q:
+        x,y = q.popleft()
         for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if 0 <= nx < n and 0 <= ny < n and temp[nx][ny] == 0:
-                temp[nx][ny] = 1
-                queue.append([nx, ny])
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if 0<=nx<N and 0<=ny<N:
+                if visited[nx][ny] == 0:
+                    q.append((nx,ny))
+                    visited[nx][ny] = -1
+
+res = 0
+for cnt in range(max_h):
+    visited = [[0]*N for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            if loc[i][j] <= cnt:
+                visited[i][j] = -1
+    c = 0
+    for i in range(N):
+        for j in range(N):
+            if visited[i][j] == 0:         
+                bfs(i,j)
+                c+=1
+    res = max(res,c)
 
 
-for i in range(101):
-    temp = [[0] * n for i in range(n)]
-    cnt = 0
-    for j in range(n):
-        for k in range(n):
-            if graph[j][k] <= i:
-                temp[j][k] = 1
-    for j in range(n):
-        for k in range(n):
-            if temp[j][k] == 0:
-                temp[j][k] = 1
-                bfs(j, k)
-                cnt += 1
-
-    if cnt == 0:
-        break
-    maxCnt = max(maxCnt, cnt)
-
-print(maxCnt)
+print(res)
+                
+        
+    
+    
+        
