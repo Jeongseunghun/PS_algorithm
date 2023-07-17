@@ -18,7 +18,7 @@ res = 999999
 for c in combinations(chicken,M):
     tmp = 0
     for i in house:
-        min_d = 999999
+        min_d = 99
         for j in range(len(c)):
             min_d = min(min_d, abs(c[j][0]-i[0]) + abs(c[j][1]-i[1]))
         tmp += min_d
