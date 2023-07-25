@@ -7,6 +7,6 @@ rating.sort()
 ans = 0
 
 for i in range(1,N+1):
-    ans += abs(i - rating[i-1])
+    ans += abs(rating[i-1] - i)
     
 print(ans)
