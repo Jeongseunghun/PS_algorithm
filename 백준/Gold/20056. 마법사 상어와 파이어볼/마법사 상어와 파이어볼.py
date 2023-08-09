@@ -1,16 +1,14 @@
-from collections import deque
-
 N,M,K = map(int,input().split())
 #격자
-board = [[deque() for _ in range(N)] for _ in range(N)]
+board = [[[] for _ in range(N)] for _ in range(N)]
 
 #fireball에 좌표추가
 #board에 fireball 정보 배치
-fireball = deque()
+fireball = []
 for i in range(M):
     r,c,m,s,d = map(int,input().split())
     fireball.append((r-1,c-1))
-    board[r-1][c-1].append(deque((m,s,d)))
+    board[r-1][c-1].append([m,s,d])
     
 #상,우상,우,우하,하,좌하,좌,좌상
 dx = [-1,-1,0,1,1,1,0,-1]
@@ -21,14 +19,14 @@ dy = [0,1,1,1,0,-1,-1,-1]
 def move():
     
     while fireball:
-        x,y = fireball.popleft()
-        m,s,d = board[x][y].popleft()
+        x,y = fireball.pop(0)
+        m,s,d = board[x][y].pop(0)
         
         nx = (x + dx[d] * s) % N
         ny = (y + dy[d] * s) % N
         
         #board에 이동한 fireball 정보 배치
-        board[nx][ny].append(deque((m,s,d)))
+        board[nx][ny].append([m,s,d])
 
 #두개 이상의 파이어볼 체크
 def chk():
@@ -40,7 +38,7 @@ def chk():
                 count = [0,0]
                 length = len(board[x][y])
                 while board[x][y]:
-                    m,s,d = board[x][y].popleft()
+                    m,s,d = board[x][y].pop(0)
                     #모든 질량 더해주기
                     mass += m
                     #모든 스피드 더해주기
@@ -60,7 +58,7 @@ def chk():
                 #board에 fireball 좌표 하나씩 추가
                 for direction in directions:
                     fireball.append((x,y))
-                    board[x][y].append(deque((mass//5,speed//length,direction)))
+                    board[x][y].append([mass//5,speed//length,direction])
                 
             #fireball이 한개면 좌표정보만 추가
             elif len(board[x][y]) == 1:
@@ -79,3 +77,4 @@ for i in range(N):
         ans += sum(m[0] for m in board[i][j])
         
 print(ans)
+        
