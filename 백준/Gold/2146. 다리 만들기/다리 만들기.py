@@ -28,7 +28,7 @@ def bfs(x,y,c):
 def connect(island):
     global ans
     q = deque()
-    dist = [[-1 for _ in range(N)] for _ in range(N)]
+    dist = [[0 for _ in range(N)] for _ in range(N)]
     
     for i in range(N):
         for j in range(N):
@@ -36,7 +36,6 @@ def connect(island):
                 q.append((i,j))
                 dist[i][j] = 0
                 
-    
     while q:
         x,y = q.popleft()
         for i in range(4):
@@ -46,7 +45,7 @@ def connect(island):
                 if board[nx][ny] > 0 and board[nx][ny] != island:
                     ans = min(ans,dist[x][y])
                     return
-                if board[nx][ny] == 0 and dist[nx][ny] == -1:
+                if board[nx][ny] == 0 and dist[nx][ny] == 0:
                     dist[nx][ny] = dist[x][y] + 1
                     q.append((nx,ny))             
                     
@@ -60,7 +59,6 @@ for i in range(N):
             bfs(i,j,island_cnt)
           
 ans = 99999  
-
 
 for i in range(2,island_cnt+1):
     connect(i)
