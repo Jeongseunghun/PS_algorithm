@@ -3,7 +3,7 @@ N = int(input())
 ans = 0
 for i in range(1,N+1):
     a = list(map(int,str(i)))
-    if len(a) < 2:
+    if len(a) < 3:
         ans += 1
     else:
         gap = a[1]-a[0]
