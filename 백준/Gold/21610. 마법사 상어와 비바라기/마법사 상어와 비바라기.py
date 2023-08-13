@@ -1,5 +1,3 @@
-from collections import deque
-
 N, M = map(int,input().split())
 #바구니에 저장된 물 격자
 board = [list(map(int,input().split())) for _ in range(N)]
@@ -17,10 +15,9 @@ dx = [0,-1,-1,-1,0,1,1,1]
 dy = [-1,-1,0,1,1,1,0,-1]
 
 #물복사버그
-def watercopy(board,tmp,cloud,m_q):
+def watercopy(board,cloud,m_q):
     
-    while m_q:
-        x,y = m_q.popleft()
+    for x,y in m_q:
         cnt = 0
         for i in range(1,5):
             nx = x + dx[2*i-1]
@@ -33,7 +30,7 @@ def watercopy(board,tmp,cloud,m_q):
     for i in range(N):
         for j in range(N):
             if board[i][j] >=2:
-                if (i,j) not in tmp:
+                if (i,j) not in m_q:
                     cloud[i][j] = 1
                     board[i][j] -= 2
     return cloud
@@ -50,10 +47,8 @@ def rain(cloud,d,s):
             if cloud[i][j] == 1:
                 q.append((i,j))
     #이동한 비구름 좌표(=물 증가한 비구름 좌표)
-    m_q = deque()
-    
-    #이동한 비구름 좌표 저장
-    tmp = []
+    m_q = []    
+
     #비구름 이동
     for x,y in q:
         nx = (x + dx[d-1] * s) % N
@@ -61,22 +56,20 @@ def rain(cloud,d,s):
         #물의 양 1 증가
         board[nx][ny] += 1
         m_q.append((nx,ny))
-        tmp.append((nx,ny))
+ 
     
     #비구름 초기화(모두 사라짐)
     cloud = [[0 for _ in range(N)] for _ in range(N)]
     
     #물복사버그 시전
-    cloud = watercopy(board,tmp,cloud,m_q)
+    cloud = watercopy(board,cloud,m_q)
 
     return cloud
 
 
 for d,s in command:
     cloud = rain(cloud,d,s)
-    # print("board:",board)
-    # print("cloud:",cloud)
-    
+  
 
 #바구니에 들어있는 물 합 구하기
 ans = 0   
