@@ -15,8 +15,7 @@ for i in range(M):
     trees[x-1][y-1].append(z)
 
 
-def spring_summer():     
-
+def spring_summer():
     for i in range(N):
         for j in range(N):
             dead_tree = 0
@@ -33,8 +32,7 @@ def spring_summer():
 
 
 def fall_winter():
-    tmp_trees = []
-    
+      
     #좌 좌상 상 우상 우 우하 하 좌하
     dx = [0,-1,-1,-1,0,1,1,1]
     dy = [-1,-1,0,1,1,1,0,-1]
@@ -46,16 +44,11 @@ def fall_winter():
                     for d in range(8):
                         nx = i + dx[d]
                         ny = j + dy[d]
-                        if 0 <= nx < N and 0<= ny < N:
-                            tmp_trees.append((nx,ny))
+                        if 0 <= nx < N and 0 <= ny < N:
+                            trees[nx][ny].appendleft(1)
             #양분 추가(겨울)
             board[i][j] += A[i][j]
-            
-    for r,c in tmp_trees:
-        trees[r][c].appendleft(1)
-    
-    
-
+ 
 
 for _ in range(K):
     spring_summer()
