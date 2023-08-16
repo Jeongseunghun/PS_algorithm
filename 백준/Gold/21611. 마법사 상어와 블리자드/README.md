@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 34396 KB, 시간: 344 ms
+메모리: 34544 KB, 시간: 276 ms
 
 ### 분류
 
@@ -21,7 +21,7 @@
 		<tr>
 			<td><img alt="" src="https://upload.acmicpc.net/443a20c6-fbd7-4951-9b68-bf78b12b27fb/-/preview/" style="width: 204px; height: 203px;"></td>
 			<td><img alt="" src="https://upload.acmicpc.net/7781df31-3999-4234-a032-32cb6fd439e9/-/preview/" style="width: 204px; height: 204px;"></td>
-			<td><img alt="" src="" style="width: 204px; height: 204px;"></td>
+			<td><img alt="" src="https://upload.acmicpc.net/50b901d5-47ec-4504-bce1-122e8282284a/-/preview/" style="width: 204px; height: 204px;"></td>
 		</tr>
 		<tr>
 			<td>N = 3</td>
@@ -33,7 +33,7 @@
 
 <p>가장 처음에 상어가 있는 칸을 제외한 나머지 칸에는 구슬이 하나 들어갈 수 있다. 구슬은 1번 구슬, 2번 구슬, 3번 구슬이 있다. 같은 번호를 가진 구슬이 번호가 연속하는 칸에 있으면, 그 구슬을 연속하는 구슬이라고 한다. 다음은 N = 7인 경우 예시이다. </p>
 
-<p style="text-align: center;"><img alt="" src="" style="width: 300px; height: 299px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/2c31bd47-ddc9-40f2-9830-05bef469fb4a/-/preview/" style="width: 300px; height: 299px;"></p>
 
 <p>블리자드 마법을 시전하려면 방향 d<sub>i</sub>와 거리 s<sub>i</sub>를 정해야 한다. 총 4가지 방향 ↑, ↓, ←, →가 있고, 정수 1, 2, 3, 4로 나타낸다. 상어는 d<sub>i</sub> 방향으로 거리가 s<sub>i</sub> 이하인 모든 칸에 얼음 파편을 던져 그 칸에 있는 구슬을 모두 파괴한다. 구슬이 파괴되면 그 칸은 구슬이 들어있지 않은 빈 칸이 된다. 얼음 파편은 벽의 위로 떨어지기 때문에, 벽은 파괴되지 않는다.</p>
 
@@ -42,7 +42,7 @@
 <table class="table table-bordered td-center td-middle">
 	<tbody>
 		<tr>
-			<td><img alt="" src="" style="width: 300px; height: 299px;"></td>
+			<td><img alt="" src="https://upload.acmicpc.net/ca05f21a-bd15-4fbd-80a5-899712db2beb/-/preview/" style="width: 300px; height: 299px;"></td>
 			<td><img alt="" src="https://upload.acmicpc.net/4768a8c6-c935-430d-9ce3-7fde346b0830/-/preview/" style="width: 300px; height: 299px;"></td>
 		</tr>
 		<tr>
@@ -54,14 +54,14 @@
 
 <p>만약 어떤 칸 A의 번호보다 번호가 하나 작은 칸이 빈 칸이면, A에 있는 구슬은 그 빈 칸으로 이동한다. 이 이동은 더 이상 구슬이 이동하지 않을 때까지 반복된다. 따라서, 구슬이 파괴된 후에는 빈 칸이 생겨 구슬이 이동하고, 구슬이 모두 이동한 결과는 다음과 같다.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="width: 300px; height: 299px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/28dcbbe3-7035-49ad-afed-642218adee39/-/preview/" style="width: 300px; height: 299px;"></p>
 
 <p>이제 구슬이 폭발하는 단계이다. 폭발하는 구슬은 4개 이상 연속하는 구슬이 있을 때 발생한다. 다음은 왼쪽 그림은 위의 상태에서 폭발하는 구슬이 들어있는 칸을 파란색과 초록색으로 표시한 것이고, 오른쪽 그림은 구슬이 폭발한 후의 상태이다.</p>
 
 <table class="table table-bordered td-center td-middle">
 	<tbody>
 		<tr>
-			<td><img alt="" src="" style="width: 300px; height: 299px;"></td>
+			<td><img alt="" src="https://upload.acmicpc.net/41c500e1-e82c-440c-afcc-f351af9ea1dc/-/preview/" style="width: 300px; height: 299px;"></td>
 			<td><img alt="" src="https://upload.acmicpc.net/cf990414-2eb8-4f60-bd4c-bf8dfd35665d/-/preview/" style="width: 300px; height: 299px;"></td>
 		</tr>
 		<tr>
@@ -80,8 +80,8 @@
 <table class="table table-bordered td-center td-middle">
 	<tbody>
 		<tr>
-			<td><img alt="" src="" style="width: 300px; height: 299px;"></td>
-			<td><img alt="" src="" style="width: 300px; height: 299px;"></td>
+			<td><img alt="" src="https://upload.acmicpc.net/5fb62a98-2cea-4c4d-9b6f-9c540b459290/-/preview/" style="width: 300px; height: 299px;"></td>
+			<td><img alt="" src="https://upload.acmicpc.net/0f70b5e5-3111-4f16-a699-42638a17c540/-/preview/" style="width: 300px; height: 299px;"></td>
 		</tr>
 		<tr>
 			<td>구슬이 폭발하기 전</td>
