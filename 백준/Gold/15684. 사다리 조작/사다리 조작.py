@@ -35,7 +35,8 @@ def ladder_add(cnt,x,y):
         else:
             num = 0
         for j in range(num, N-1):
-            if not ladder[i][j] and ladder[i][j+1] == 0:
+            #오른쪽에 사다리가 존재하지 않을 경우
+            if ladder[i][j] == 0 and ladder[i][j+1] == 0:
                 if j > 0 and ladder[i][j-1]:
                     continue
                 ladder[i][j] = True
