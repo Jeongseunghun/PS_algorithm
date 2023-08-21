@@ -39,9 +39,9 @@ def ladder_add(cnt,x,y):
             if ladder[i][j] == 0 and ladder[i][j+1] == 0:
                 if j > 0 and ladder[i][j-1]:
                     continue
-                ladder[i][j] = True
+                ladder[i][j] = 1
                 ladder_add(cnt+1,i,j+2)
-                ladder[i][j] = False                
+                ladder[i][j] = 0               
 
 ans = 4
 ladder_add(0,0,0)
