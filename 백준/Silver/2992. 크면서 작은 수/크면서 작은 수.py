@@ -7,7 +7,6 @@ used = [False] * length
 
 def dfs(cnt):
     global min_num,num
- 
     if cnt == length:
         if x < num:
             min_num = min(min_num,num)
@@ -21,6 +20,7 @@ def dfs(cnt):
         dfs(cnt+1)
         used[i] = False
         num = num[:-1]
+        
 
 dfs(0)
 
