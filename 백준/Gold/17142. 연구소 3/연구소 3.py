@@ -41,13 +41,9 @@ def bfs(v):
     return tmp
 #바이러스 위치 저장
 virus = []
-#벽 갯수
-wall = 0
 
 for i in range(N):
     for j in range(N):
-        if lab[i][j] == 1:
-            wall += 1
         if lab[i][j] == 2:
             virus.append((i,j))
 
