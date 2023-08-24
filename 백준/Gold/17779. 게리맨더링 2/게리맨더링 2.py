@@ -5,7 +5,6 @@ s = 0
 for i in city:
     s += sum(i)
     
-
 def div(x,y,d1,d2):
     global ans,s
     one,two,three,four = 0,0,0,0
@@ -41,7 +40,7 @@ def div(x,y,d1,d2):
     #5구역
     five = s - (one+two+three+four)
     
-    ans = min(ans, (max(one,two,three,four,five)- min(one,two,three,four,five)))
+    ans = min(ans,(max(one,two,three,four,five) - min(one,two,three,four,five)))
 
 ans = 1e9
 
@@ -50,9 +49,7 @@ for x in range(N-2):
     for y in range(1,N-1):
         for d1 in range(1,N-1):
             for d2 in range(1,N-1):
-                if 0<= x+d1-1 < N and 0<= y+d2-1 < N and 0 <= y-d1+d2-1 < N:
-                    if y-d1 >= 0 and y+d2 < N and x+d1+d2 < N:
+                if 0 <= x + d2 < N and 0 <= y+d2 < N and x+d1+d2 < N and y-d1+d2 < N and x+d1>0 and y-d1>0:
                         div(x,y,d1,d2)
                     
-                
 print(ans)
