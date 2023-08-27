@@ -90,15 +90,8 @@ def blue(x,y,d,num):
     elif board[nx][ny] == 2:
         return
 
-
 #말 이동
-def move(k):
-
-    return
-cnt = 0
-while cnt <= 1000:
-    #턴 추가 
-    cnt += 1
+def move():
     #말 순서대로 실행
     for k in range(1,K+1):
         hx,hy,hd = horse[k]
@@ -114,6 +107,12 @@ while cnt <= 1000:
             red(hx,hy,nx,ny,k,hd)
         elif board[nx][ny] == 2:
             blue(hx,hy,hd,k)
+
+    return
+cnt = 0
+while cnt <= 1000:
+    #턴 추가 
+    cnt += 1
+    move()
         
 print(-1)
-                    
