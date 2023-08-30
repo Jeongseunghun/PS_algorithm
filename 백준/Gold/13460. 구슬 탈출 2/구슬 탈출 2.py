@@ -17,7 +17,10 @@ def move(x,y,dx,dy):
     
     return x,y,cnt
 
-def bfs():
+def bfs(rx,ry,bx,by,depth):
+    #빨간 구슬과 파란 구슬 위치 정보, depth
+    q.append((rx,ry,bx,by,depth))
+    visited[rx][ry][bx][by] = True
     while q:
         rx,ry,bx,by,depth = q.popleft()
         if depth > 10:
@@ -25,6 +28,7 @@ def bfs():
         for i in range(4):
             nrx,nry,rcnt = move(rx,ry,dx[i],dy[i])
             nbx,nby,bcnt = move(bx,by,dx[i],dy[i])
+            #파란 구슬이 구멍엥 안들어갔을 때
             if board[nbx][nby] != 'O':
                 if board[nrx][nry] == 'O':
                     print(depth)
@@ -52,7 +56,5 @@ for i in range(N):
             rx,ry = i,j
         if board[i][j] == "B":
             bx,by = i,j
-#빨간 구슬과 파란 구슬 위치 정보, depth
-q.append((rx,ry,bx,by,1))
-visited[rx][ry][bx][by] = True
-bfs()
+
+bfs(rx,ry,bx,by,1)
