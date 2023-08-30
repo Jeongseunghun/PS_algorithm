@@ -8,6 +8,7 @@ visited = [[[[False]*M for _ in range(N)] for _ in range(M)] for _ in range(N)]
 dx = [-1,1,0,0]
 dy = [0,0,-1,1]
 
+#방향대로 이동할 수 있을 때까지 이동하기
 def move(x,y,dx,dy):
     cnt = 0
     while board[x+dx][y+dy] != '#' and board[x][y] != 'O':
@@ -18,6 +19,7 @@ def move(x,y,dx,dy):
     return x,y,cnt
 
 def bfs(rx,ry,bx,by,depth):
+    q = deque()
     #빨간 구슬과 파란 구슬 위치 정보, depth
     q.append((rx,ry,bx,by,depth))
     visited[rx][ry][bx][by] = True
@@ -48,7 +50,6 @@ def bfs(rx,ry,bx,by,depth):
     
     print(-1)    
 
-q = deque()
 rx,ry,bx,by = 0,0,0,0
 for i in range(N):
     for j in range(M):
