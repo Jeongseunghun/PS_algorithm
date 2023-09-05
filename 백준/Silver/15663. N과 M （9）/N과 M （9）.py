@@ -1,25 +1,21 @@
-N, M = map(int, input().split())
-L = list(map(int, input().split()))
+N,M = map(int,input().split())
+lst = list(map(int,input().split()))
+lst.sort()
 
-L.sort()
 visited = [False] * N
-out = []
-all_out = []
-
-def solve(depth, N, M):
-    if depth == M:
-        tmp = ' '.join(map(str, out))
-        if tmp not in all_out:
-            all_out.append(tmp)
+ans = []
+def dfs():
+    if len(ans) == M:
+        print(*ans)
         return
+    tmp = 0
     for i in range(N):
-        if not visited[i]:
-            out.append(L[i])
+        if visited[i] == False and tmp != lst[i]:
             visited[i] = True
-            solve(depth+1, N, M)
-            out.pop()
+            ans.append(lst[i])
+            tmp = lst[i]
+            dfs()
             visited[i] = False
+            ans.pop()
 
-solve(0, N, M)
-for i in all_out:
-    print(i)
+dfs()
