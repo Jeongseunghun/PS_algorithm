@@ -14,7 +14,7 @@ def fisher_catch(loc):
         #상어가 있으면
         if len(board[i][loc]) != 0:
             sum+=board[i][loc][0][2]
-            board[i][loc].remove(board[i][loc][0])
+            board[i][loc].pop()
             break
             
 #상하우좌
@@ -30,13 +30,14 @@ def shark_move():
             if board[i][j]:
                 x,y = i,j
                 s,d,z = board[i][j][0]
-                move = s
-                while 0 < move:
+                move = 0
+                #s번 움직임
+                while s > move:
                     nx = x + dx[d]
                     ny = y + dy[d]
-                    if 0<= nx < R and 0 <= ny < C:
+                    if 0 <= nx < R and 0 <= ny < C:
                         x,y = nx,ny
-                        move -= 1
+                        move += 1
                     else:
                         if d == 0:
                             d = 1
@@ -51,6 +52,7 @@ def shark_move():
     
     board = tmp_board
     
+    #한 칸에 중복 시 큰 상어만 살아남기
     for i in range(R):
         for j in range(C):
             if 1 < len(board[i][j]):
