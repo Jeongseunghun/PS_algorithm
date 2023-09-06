@@ -6,17 +6,19 @@ dice = list(map(int,input().split()))
 ans = 0
 def backtracking(loc,res,horse,test):
     global ans
-    if loc >= 10:
+    if loc > 10:
         ans = max(ans,res)
         return
     #말 네개 이동
     for i in range(4):
+        #말 현재 위치
         x = horse[i]
+        #이동할 수 있는 경우가 두개면 파란색 이동
         if len(graph[x]) == 2:
             x = graph[x][1]
         else:
             x = graph[x][0]
-        for j in range(1,dice[loc]):
+        for j in range(1,dice[loc-1]):
             x = graph[x][0]
         if x == 32 or (x<32 and x not in horse):
             before = horse[i]
@@ -26,5 +28,5 @@ def backtracking(loc,res,horse,test):
             test.pop()
             horse[i] = before
 
-backtracking(0,0,[0,0,0,0],[])
+backtracking(1,0,[0,0,0,0],[])
 print(ans)
