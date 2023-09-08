@@ -3,11 +3,8 @@ from collections import deque
 N,K = map(int,input().split())
 fishbowl = [deque(list(map(int,input().split())))]
 
-
-
 #물고기 추가
 def add_fish(fishbowl):
-    
     min_val = min(fishbowl[0])
     for i in range(len(fishbowl[0])):
         if min_val == fishbowl[0][i]:
@@ -29,17 +26,17 @@ def rotate_90(block):
 #어항 공중 부양 후 90도 회전 쌓기
 def move_bowl(arr):
     while True:
-        #
+        #어항 높이(len(arr)) > 바닥에 있는 개수(len(arr[0])) - 맨 위에 있는 개수(len(arr[-1]))면 멈추기
         if len(arr) > len(arr[0]) - len(arr[-1]):
             break
         blocks = []
-        r = len(arr)
-        c = len(arr[-1])
         
-        for i in range(r):
+        for i in range(len(arr)):
             tmp_q = deque()
-            for _ in range(c):
+            #맨 위의 어항 개수만큼 빼서 tmp_q에 집어넣기
+            for _ in range(len(arr[-1])):
                 tmp_q.append(arr[i].popleft())
+                
             blocks.append(tmp_q)
         
         arr = [arr[0]]
@@ -48,7 +45,6 @@ def move_bowl(arr):
             arr.append(deque(i))
 
     return arr
-        
 
 #상하좌우
 dx = [-1,1,0,0]
@@ -67,10 +63,7 @@ def adjust_fish(arr):
                         val = (arr[x][y] - arr[nx][ny]) // 5
                         if val >= 1:
                             board[x][y] -= val
-                    else:
-                        val = (arr[nx][ny] - arr[x][y]) // 5
-                        if val >= 1: 
-                            board[x][y] += val
+                            board[nx][ny] += val
     
     for i in range(len(arr)):
         for j in range(len(arr[i])):
@@ -79,9 +72,11 @@ def adjust_fish(arr):
 #어항 일렬 정렬
 def flatten_bowl(arr):
     tmp = deque()
+    #어항 박스 모양 세로로 이어붙이기
     for i in range(len(arr[-1])):
         for j in range(len(arr)):
             tmp.append(arr[j][i])
+    #어항 나머지 이어붙이기
     for i in range(len(arr[-1]),len(arr[0])):
         tmp.append(arr[0][i])
     
@@ -91,19 +86,23 @@ def rotate_180(arr):
     tmp = []
     for i in reversed(range(len(arr))):
         arr[i].reverse()
-        tmp.append((arr[i]))
+        tmp.append(arr[i])
     
     return tmp
 
 #어항 쌓기(공중부양 다시)
 def move_bowl2(arr):
+    #왼쪽 N//2개를 tmp에 추가
     tmp = deque()
     for i in range(N//2):
         tmp.append(arr[0].popleft())
-    rotated = rotate_180([tmp])
-    arr += rotated
+    #tmp 180도 회전
+    rotate = rotate_180([tmp])
+    #arr에 붙이기
+    arr += rotate
     
     left = []
+    #2번 반복
     for i in range(2):
         d = deque()
         for j in range(N//4):
@@ -122,6 +121,7 @@ while True:
     add_fish(fishbowl)
     build_bowl(fishbowl)
     fishbowl = move_bowl(fishbowl)
+    
     adjust_fish(fishbowl)
     fishbowl = flatten_bowl(fishbowl)
     move_bowl2(fishbowl)
