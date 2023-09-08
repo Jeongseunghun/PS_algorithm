@@ -41,6 +41,7 @@ def move_bowl(arr):
         
         arr = [arr[0]]
         rotate = rotate_90(blocks)
+        #돌린 어항 쌓아주기
         for i in rotate:
             arr.append(deque(i))
 
@@ -105,6 +106,7 @@ def move_bowl2(arr):
     #2번 반복
     for i in range(2):
         d = deque()
+        #왼쪽 N//4개를 d에 추가
         for j in range(N//4):
             d.append(arr[i].popleft())
         left.append(d)
@@ -121,7 +123,6 @@ while True:
     add_fish(fishbowl)
     build_bowl(fishbowl)
     fishbowl = move_bowl(fishbowl)
-    
     adjust_fish(fishbowl)
     fishbowl = flatten_bowl(fishbowl)
     move_bowl2(fishbowl)
