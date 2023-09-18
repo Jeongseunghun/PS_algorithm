@@ -33,6 +33,7 @@ def move(stu,love_lst):
 
 
 def survey(sum_lst):
+    sum = 0
     for k in sum_lst:
         for x in range(N):
             for y in range(N):
@@ -44,9 +45,12 @@ def survey(sum_lst):
                         if 0 <= nx < N and 0 <= ny < N:
                             if board[nx][ny] in k[1]:
                                 cnt += 1
-                    love_cnt_lst.append(cnt)
+                    if cnt > 0:
+                        sum+= 10**(cnt-1)
 
-love_cnt_lst = []
+    return sum
+
+
 sum_lst = []
 for i in range(N**2):
     stu,num1,num2,num3,num4 = map(int,input().split())
@@ -55,10 +59,4 @@ for i in range(N**2):
     move(stu,love_lst)
     sum_lst.append((stu,love_lst))
 
-survey(sum_lst)
-
-sum = 0
-for i in love_cnt_lst:
-    if i > 0:
-        sum += 10 ** (i - 1)
-print(sum)
+print(survey(sum_lst))
