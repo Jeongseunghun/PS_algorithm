@@ -75,7 +75,6 @@ def check(num,cnt):
 #구슬 폭발
 def explode():
     total = 0
-    #구슬 번호, 그룹 내 구슬 개수
     num,cnt = board[arr[0][0]][arr[0][1]], 1
     bomb = [arr[0]]
     for i in range(1,len(arr)):
@@ -99,9 +98,17 @@ def explode():
             board[a][b] = 0
                 
     return total
-
-#구슬 변화
-def change():
+   
+for d,s in command:
+    dest(d,s)
+    fill_blank()
+    
+    while True:
+        if explode():
+            fill_blank()
+        else:
+            break
+        
     num,cnt = board[arr[0][0]][arr[0][1]], 1
     tmp = deque()
     for i in range(1,len(arr)):
@@ -121,20 +128,7 @@ def change():
             board[x][y] = tmp.popleft()
         else:
             board[x][y] = 0
-    
-   
-for d,s in command:
-    dest(d,s)
-    fill_blank()
-    
-    while True:
-        if explode():
-            fill_blank()
-        else:
-            break
-        
-    change()
-      
+            
 answer = 0
 for i in range(1,4):
     answer += i * result[i-1]
