@@ -1,10 +1,10 @@
-def dfs(lst,K,tmp,depth,idx):
-    if depth == 6:
+def dfs(lst,K,tmp,idx):
+    if len(tmp) == 6:
         print(*tmp)
         return
     for i in range(idx,K):
         tmp.append(S[i])
-        dfs(lst,K,tmp,depth+1,i+1)
+        dfs(lst,K,tmp,i+1)
         tmp.pop()
 
 while True:
@@ -14,5 +14,5 @@ while True:
     if K == 0:
         break
     tmp = []
-    dfs(S,K,tmp,0,0)
+    dfs(S,K,tmp,0)
     print()
