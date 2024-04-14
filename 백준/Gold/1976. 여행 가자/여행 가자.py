@@ -3,7 +3,6 @@ def find(x):
         parents[x] = find(parents[x])
     return parents[x]
 
-
 def union(x,y):
     x = find(x)
     y = find(y)
@@ -11,7 +10,6 @@ def union(x,y):
         parents[y] = x
     else:
         parents[x] = y
-
 
 N = int(input())
 M = int(input())
@@ -25,10 +23,12 @@ for i in range(N):
             union(i,j)
 parents = [-1] + parents
 s = parents[city[0]]
+flag = True
 for i in range(1,M):
     if parents[city[i]] != s:
         print("NO")
+        flag = False
         break
     
-else:
+if flag:
     print("YES")
