@@ -3,10 +3,10 @@ lst = list(map(int,input().split()))
 
 s=0
 e=N-1
-ans = 200000000
+ans = lst[s] + lst[e]
 while s<e:
     chemi = lst[s] + lst[e]
-    if abs(ans) >= abs(chemi):
+    if abs(ans) > abs(chemi):
         ans = chemi
 
     if chemi > 0:
