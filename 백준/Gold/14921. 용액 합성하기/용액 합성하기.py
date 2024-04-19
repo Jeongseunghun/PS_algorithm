@@ -8,12 +8,12 @@ while s<e:
     chemi = lst[s] + lst[e]
     if abs(ans) >= abs(chemi):
         ans = chemi
-        
+
     if chemi > 0:
         e-=1
     elif chemi < 0:
         s+=1
     else:
-        break
+        break   
 
 print(ans)
