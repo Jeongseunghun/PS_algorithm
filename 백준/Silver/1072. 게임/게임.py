@@ -1,5 +1,8 @@
+import math
+
 X,Y = map(int,input().split())
-Z = (100 * Y) // X
+
+Z = Y*100//X
 
 if Z >= 99:
     print(-1)
