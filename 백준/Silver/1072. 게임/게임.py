@@ -2,7 +2,7 @@ import math
 
 X,Y = map(int,input().split())
 
-Z = Y*100//X
+Z = math.floor(Y*100/X)
 
 if Z >= 99:
     print(-1)
