@@ -15,21 +15,12 @@ for i in range(T):
         if tmp < dis:
             ans = 1
             dis = tmp
-            if K-(lst[l]+lst[r]) < 0:
-                r-=1
-            else:
-                l+=1
         elif tmp == dis:
             ans+=1
-            if K-(lst[l]+lst[r]) < 0:
-                r-=1
-            else:
-                l+=1
+            
+        if K-(lst[l]+lst[r]) < 0:
+            r-=1
         else:
-            if K-(lst[l]+lst[r]) < 0:
-                r-=1
-            else:
-                l+=1
-                
+            l+=1
             
     print(ans)
