@@ -20,6 +20,7 @@ def bfs(sx,sy):
             if 0 <= nx < N and 0 <= ny < M:
                 if board[nx][ny] == board[x][y] and visited[nx][ny] == 0:
                     q.append((nx,ny))
+                    visited[nx][ny] = 1
                 elif board[nx][ny] > board[x][y]:
                     Flag = False
                     
