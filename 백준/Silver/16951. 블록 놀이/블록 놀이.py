@@ -13,13 +13,10 @@ N,K = map(int,input().split())
 lst = list(map(int,input().split()))
 
 cnt = 1001
-if N == 1:
-    cnt = 0
-else:
-    for i in range(N):
-        if lst[i] > i*K:
-            tmp = chk(i)
-            cnt = min(cnt,tmp)
+
+for i in range(N):
+    if lst[i] > i*K:
+        tmp = chk(i)
+        cnt = min(cnt,tmp)
             
 print(cnt)
-                
