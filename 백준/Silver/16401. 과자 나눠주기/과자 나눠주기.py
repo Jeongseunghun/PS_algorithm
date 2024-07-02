@@ -1,20 +1,24 @@
-M,N = map(int,input().split())
+import sys
+input = sys.stdin.readline
+
+M, N = map(int,input().split())
 lst = list(map(int,input().split()))
+
+cnt = 0
+
 s = 1
-e = 1000000000
+e = max(lst)
 
-ans = 0
-
-while s <= e:
+while s<=e:
     mid = (s+e) // 2
-    cnt = 0
+    total = 0
     for i in lst:
-        cnt += i //mid
-    
-    if cnt >= M:
-        ans = max(ans,mid)
-        s = mid +1
+        total += i // mid
+    if total >= M:
+        s = mid + 1
+        cnt = mid
     else:
-        e = mid -1
-        
-print(ans)
+        e = mid - 1
+
+print(cnt)
+    
