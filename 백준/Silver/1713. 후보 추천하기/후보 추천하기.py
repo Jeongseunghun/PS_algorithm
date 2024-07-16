@@ -11,6 +11,7 @@ for i in range(num):
             paging[students[i]] = [1,i]
         #비어있는 사진틀이 없으면
         else:
+            #추천 받은 수와 들어온 순서
             lst = sorted(paging.items(), key = lambda x : (x[1][0],x[1][1]))
             tmp = lst[0][0]
             del paging[tmp]
