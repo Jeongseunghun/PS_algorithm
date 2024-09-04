@@ -13,6 +13,5 @@ def chk(num,s):
 T = int(input())
 for _ in range(T):
     N = int(input())
-    ans = []
     chk(2,'1')
     print()
