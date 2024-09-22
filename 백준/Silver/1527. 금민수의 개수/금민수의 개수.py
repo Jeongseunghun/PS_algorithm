@@ -7,8 +7,6 @@ def dfs(i,str):
         return
     for l in lst:
         dfs(i,str+l)
-    
-    return
 
 A,B = map(int,input().split())
 
