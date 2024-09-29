@@ -1,30 +1,21 @@
 N,L = map(int,input().split())
-lst = []
-for _ in range(N):
-    s,e = map(int,input().split())
-    lst.append([s,e])
-
+lst = [list(map(int,input().split())) for _ in range(N)]
 lst = sorted(lst,key = lambda x : (x[0],x[1]))
 
-l = lst[0][0]
 ans = 0
+start = lst[0][0]
 
 for x,y in lst:
-    if x > l:
-        l = x
-    tmp = y - l
-    if tmp % L == 0:
-        cnt = tmp // L
-        l = y
+    if x > start:
+        start = x
+
+    if (y-start) % L == 0:
+        ans += (y-start) // L
+        start = y
     else:
-        cnt = tmp // L + 1
-        l = y + (L-tmp%L)
+        ans += (y-start) // L + 1
+        start = y + (L-(y-start)% L)
     
-    ans += cnt
 
 print(ans)
-            
-        
     
-    
-        
