@@ -1,0 +1,2 @@
+SELECT sum(AGE is null) AS USERS
+FROM USER_INFO
