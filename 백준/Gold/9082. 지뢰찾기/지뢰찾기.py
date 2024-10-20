@@ -1,9 +1,7 @@
 T = int(input())
 for _ in range(T):
     N = int(input())
-    board = list(input())
-    for i in range(N):
-        board[i] = int(board[i])
+    board = list(map(int,input()))
     mine = input()
     ans = 0
     for i in range(N):
