@@ -4,7 +4,7 @@ def solution(begin, target, words):
     if target not in words:
         return 0
     
-    visited = set()
+    visited = []
     
     def convert(w1,w2):
         cnt = 0
@@ -24,7 +24,7 @@ def solution(begin, target, words):
         
         for w in words:
             if w not in visited and convert(word,w):
-                visited.add(w)
+                visited.append(w)
                 q.append([w,cnt+1])
     
     return 0
