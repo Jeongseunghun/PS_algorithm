@@ -1,14 +1,8 @@
 def solution(n):
-    if n == 1:
-        return [1]
-    elif n == 2:
-        return [1,2,3]
-    
     lst = []
     for i in range(1,n+1):
         lst.append([0 for _ in range(i)])
     
-    total = n * (n+1) // 2
     num = 1
     x,y = -1,0
     
