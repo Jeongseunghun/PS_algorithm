@@ -1,2 +1,3 @@
-SELECT sum(AGE is null) AS USERS
-FROM USER_INFO
+select count(USER_ID) as USERS
+from USER_INFO
+where age is null
