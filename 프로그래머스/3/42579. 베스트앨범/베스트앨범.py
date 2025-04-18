@@ -1,29 +1,27 @@
 def solution(genres, plays):
-    cnt = len(genres)
-    
+    answer = []
     dict = {}
-    for i in range(cnt):
-        if genres[i] not in dict:
-            dict[genres[i]] = plays[i]
+    for idx,i in enumerate(genres):
+        if i not in dict:
+            dict[i] = plays[idx]
         else:
-            dict[genres[i]] += plays[i]
+            dict[i] += plays[idx]
     
-    dict_sorted = sorted(dict.items(),key = lambda x : x[1], reverse= True)
+    dict = sorted(dict.items(),key = lambda x : -x[1])
     
-    lst = {}
-    for i in range(cnt):
-        if genres[i] not in lst:
-            lst[genres[i]] = [[plays[i],i]]
-        else:
-            lst[genres[i]].append([plays[i],i])
+    lst = []
+    for idx,(g,p) in enumerate(zip(genres,plays)):
+        lst.append([g,p,idx])
     
-    for i in lst:
-        lst[i].sort(key = lambda x : x[0],reverse=True)
+    lst.sort(key = lambda x : (-x[1],x[2]))
     
-    print(lst)
-    ans = []
-    for i in dict_sorted:
-        for j in lst[i[0]][:2]:
-            ans.append(j[1])
-    
-    return ans
+    for i in dict:
+        cnt = 0
+        for j in lst:
+            if cnt >= 2:
+                break
+            elif j[0] == i[0]:
+                cnt+=1
+                answer.append(j[2])
+                
+    return answer
