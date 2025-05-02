@@ -1,5 +1,5 @@
-select NAME, count(name) as COUNT
+select NAME, count(ANIMAL_ID) as COUNT
 from ANIMAL_INS
-group by name
-having count(name) >= 2
-order by name
+group by NAME
+having count(Name) >= 2
+order by NAME
